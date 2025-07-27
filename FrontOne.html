@@ -10,6 +10,7 @@
             text-align: center;
             padding: 50px;
             color: rgb(1, 15, 77);
+            background-color: #f0f8ff;
         }
         input {
             padding: 10px;
@@ -20,7 +21,14 @@
         button {
             padding: 10px 20px;
             font-size: 16px;
-            cursor:progress;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
         }
         #result {
             margin-top: 20px;
@@ -31,11 +39,30 @@
 </head>
 <body>
     <h1>Age Calculator</h1>
-    <label for="dob">Enter your date of birth:</label>
-    <input type="date" id="dob">
-    <button onclick="calculateAge()">Calculate Age</button>  <!-- Updated: "calculateAge()" -->
+    <label for="dob">Enter your date of birth:</label><br>
+    <input type="date" id="dob"><br>
+    <button onclick="calculateAge()">Calculate Age</button>
     <div id="result"></div>
-`
-    <script src="script.js"></script>
+
+    <script>
+        function calculateAge() {  
+            const dob = document.getElementById('dob').value;
+            if (dob) {
+                const birthDate = new Date(dob);
+                const today = new Date();
+
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDifference = today.getMonth() - birthDate.getMonth();
+
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+
+                document.getElementById('result').textContent = `You are ${age} years old.`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter your date of birth.';
+            }
+        }
+    </script>
 </body>
 </html>
