@@ -6,3 +6,8 @@
   - type: PUSH
   fail_on_prepare_env_warning: true
   resources: NANO
+  actions:
+  - action: Purge cache at $BUDDY
+    type: CLOUDFLARE
+    integration: cloudflare
+    zone: $BUDDY
