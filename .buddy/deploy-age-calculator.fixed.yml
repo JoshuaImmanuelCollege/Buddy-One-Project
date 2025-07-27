@@ -7,3 +7,12 @@
   fail_on_prepare_env_warning: true
   resources: NANO
   arch: ARM64
+  actions:
+  - action: netlify deploy --dir=. --prodIfUnlocked
+    type: NETLIFY
+    version: 20
+    site_id: age-calc-ganache-d88c19
+    integration: netlify
+    execute_commands:
+    - netlify deploy --dir=. --prodIfUnlocked
+    shell: BASH
